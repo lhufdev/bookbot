@@ -10,3 +10,16 @@ def get_book_character_count(book_text: str) -> dict[str, int]:
         else:
             character_counts[ch] += 1
     return character_counts
+
+
+def get_sorted_character_counts(character_counts: dict[str, int]) -> list[dict]:
+    character_counts_list = [
+        {"char": ch, "num": count} for ch, count in character_counts.items()
+    ]
+
+    character_counts_list.sort(reverse=True, key=get_num_key)
+    return character_counts_list
+
+
+def get_num_key(item):
+    return item["num"]
